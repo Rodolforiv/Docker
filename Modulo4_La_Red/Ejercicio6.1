@@ -1,0 +1,32 @@
+vboxuser@Ubuntu:~/Desktop/docker/Modulo4:La_Red$ docker network create --driver bridge red_letal
+cdce955a3d790a57533eb2994fc50ba4b736ec25cbc42b315bbacaa5eb215973
+vboxuser@Ubuntu:~/Desktop/docker/Modulo4:La_Red$ docker run -d --rm --name boss --network red_letal alpine sleep 3600
+de6fcca29e620211bbc4a9e9a2bf51e8013ca5317aef619bfd79b4fa3f2e2976
+vboxuser@Ubuntu:~/Desktop/docker/Modulo4:La_Red$ docker run-d --rm --name soldier --network red_letal alpine sleep 3600
+unknown flag: --rm
+
+Usage:  docker [OPTIONS] COMMAND [ARG...]
+
+Run 'docker --help' for more information
+vboxuser@Ubuntu:~/Desktop/docker/Modulo4:La_Red$ docker exec -it soldier ping boss
+Error response from daemon: No such container: soldier
+vboxuser@Ubuntu:~/Desktop/docker/Modulo4:La_Red$ docker run-d --rm --name kaka --network red_letal alpine sleep 3600
+unknown flag: --rm
+
+Usage:  docker [OPTIONS] COMMAND [ARG...]
+
+Run 'docker --help' for more information
+vboxuser@Ubuntu:~/Desktop/docker/Modulo4:La_Red$ docker run-d  --name kaka --network red_letal alpine sleep 3600
+unknown flag: --name
+
+Usage:  docker [OPTIONS] COMMAND [ARG...]
+
+Run 'docker --help' for more information
+vboxuser@Ubuntu:~/Desktop/docker/Modulo4:La_Red$ docker run -d --rm --name soldado --network red_letales alpine sleep 3600
+8b136003c01b59715fcf942aa1206724e28098a5423689409a34e6d2fb0187db
+vboxuser@Ubuntu:~/Desktop/docker/Modulo4:La_Red$ docker exec -it soldado ping boss
+ping: bad address 'boss'
+vboxuser@Ubuntu:~/Desktop/docker/Modulo4:La_Red$ docker run -d --rm --name jefe --network red_letales alpine sleep 3600
+bf4bbf1af8e2eec0765938fccc96ca468ee427b24e227015b2136be3415b10c0
+vboxuser@Ubuntu:~/Desktop/docker/Modulo4:La_Red$ docker exec -it soldado ping boss
+

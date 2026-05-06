@@ -1,0 +1,14 @@
+vboxuser@Ubuntu:~/Desktop/docker/Modulo3:El_Arte_De_Construir$ mkdir proyecto_docker && cd proyecto_docker 
+vboxuser@Ubuntu:~/Desktop/docker/Modulo3:El_Arte_De_Construir/proyecto_docker$ fallocate -l 100MB basura.bin
+vboxuser@Ubuntu:~/Desktop/docker/Modulo3:El_Arte_De_Construivboxuser@Ubuntu:~/Desktop/docker/Modulo3:El_Arte_De_Construir/proyecto_docker$ docker build -t test:grande
+ERROR: docker: 'docker buildx build' requires 1 argument
+
+Usage:  docker buildx build [OPTIONS] PATH | URL | -
+
+Run 'docker buildx build --help' for more information
+vboxuser@Ubuntu:~/Desktop/docker/Modulo3:El_Arte_De_Construir/proyecto_docker$ docker build -t test:grande .
+[+] Building 0.2s (1/1) FINISHED             docker:default
+ => [internal] load build definition from Dockerfile   0.1s
+ => => transferring dockerfile: 2B                     0.0s
+ERROR: failed to build: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+vboxuser@Ubuntu:~/Desktop/docker/Modulo3:El_Arte_De_Construir/proyecto_docker$ 

@@ -1,0 +1,7 @@
+# Abre DOS terminales en Ubuntu.
+# Terminal 1: Lanza esto (escribe un log cada segundo)
+docker run --rm --name reloj alpine sh -c 'while true; do echo "Son las $(date)"; sleep 1; done'
+
+# Terminal 2: Persigue los logs en tiempo real
+docker logs -f reloj
+

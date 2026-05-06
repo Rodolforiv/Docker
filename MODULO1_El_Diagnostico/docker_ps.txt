@@ -1,0 +1,17 @@
+ docker ps (El Monitor de Pacientes)
+
+No lista contenedores. Lista procesos vivos aislados. Es el ps aux del mundo paralelo de namespaces.
+
+    Comando base: docker ps
+
+    Disección:
+
+        Muestra solo los contenedores en ejecución (Status: Up).
+
+        CONTAINER ID: Los primeros 12 caracteres del hash SHA256. El kernel identifica al cgroup con este ID.
+
+        IMAGE: El plano de solo lectura (la pila de capas OverlayFS).
+
+        COMMAND: El proceso PID 1 dentro del PID namespace del contenedor.
+
+        NAMES: El alias DNS dentro de la red Docker.

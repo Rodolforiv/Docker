@@ -1,0 +1,9 @@
+MÓDULO 5: LIMPIEZA QUIRÚRGICA (El Arte Final)
+7. docker system prune (El Lanzallamas)
+
+Borra todo lo que no se está ejecutando. Es peligroso si tienes datos en volúmenes sin usar.
+
+
+Lección: Un prune a ciegas en producción puede borrar un volumen de base de datos. Siempre usa prune con filtros o verifica antes con docker system df -v.
+
+

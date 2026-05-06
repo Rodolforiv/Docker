@@ -1,0 +1,17 @@
+vboxuser@Ubuntu:~/Desktop/docker/MODULO2:EL_CICLO_DE_VIDA$ docker rm -f blindado
+blindado
+vboxuser@Ubuntu:~/Desktop/docker/MODULO2:EL_CICLO_DE_VIDA$ docker ps -a --filter "name=blindado"
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+vboxuser@Ubuntu:~/Desktop/docker/MODULO2:EL_CICLO_DE_VIDA$ docker run -d --rm --name blindado \
+  -p 8081:80 \
+  --read-only \
+  --tmpfs /var/cache/nginx \
+  --tmpfs /var/run \
+  nginx:alpine
+5e49ec050b5434803374ee7dacf4bf73acde716129680e9b18fafa81b8c4ea9d
+vboxuser@Ubuntu:~/Desktop/docker/MODULO2:EL_CICLO_DE_VIDA$ docker ps --filter "name=blindado"
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                                     NAMES
+5e49ec050b54   nginx:alpine   "/docker-entrypoint.…"   24 seconds ago   Up 23 seconds   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   blindado
+vboxuser@Ubuntu:~/Desktop/docker/MODULO2:EL_CICLO_DE_VIDA$ docker exec -t blindado touch /hackeado
+touch: /hackeado: Read-only file system
+

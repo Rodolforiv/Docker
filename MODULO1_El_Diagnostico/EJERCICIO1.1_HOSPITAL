@@ -1,0 +1,96 @@
+Ejercicio 1.1 (El Hospital):
+
+vboxuser@Ubuntu:~/Desktop$ watch docker images
+vboxuser@Ubuntu:~/Desktop$ docker pull nginx:alphine
+Error response from daemon: failed to resolve reference "docker.>
+vboxuser@Ubuntu:~/Desktop$ docker pull nginx:alpine
+alpine: Pulling from library/nginx
+Digest: sha256:5616878291a2eed594aee8db4dade5878cf7edcb475e59193>
+Status: Image is up to date for nginx:alpine
+docker.io/library/nginx:alpine
+vboxuser@Ubuntu:~/Desktop$ docker images
+                                                            i In>
+IMAGE                ID             DISK USAGE   CONTENT SIZE   >
+hello-world:latest   f9078146db2e       25.9kB         9.49kB   >
+nginx:alpine         5616878291a2       93.5MB         26.9MB   >
+vboxuser@Ubuntu:~/Desktop$ ^C
+vboxuser@Ubuntu:~/Desktop$ docker run -d --name paciente_estable>
+docker: Error response from daemon: Conflict. The container name>
+
+Run 'docker run --help' for more information
+vboxuser@Ubuntu:~/Desktop$ docker run -d --name paciente_critico>
+Unable to find image 'alpine:latest' locally
+latest: Pulling from library/alpine
+a63813f19ccb: Download complete
+4e0cb4ac63e7: Download complete
+Digest: sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e6887>
+Status: Downloaded newer image for alpine:latest
+8612b126181e39a8d8061fdb130cf94df4a69090c687770d464a5ccd5e35532c
+
+boxuser@Ubuntu:~/Desktop$ docker run -d --name paciente_critico >
+Unable to find image 'alpine:latest' locally
+latest: Pulling from library/alpine
+a63813f19ccb: Download complete
+4e0cb4ac63e7: Download complete
+Digest: sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e6887>
+Status: Downloaded newer image for alpine:latest
+8612b126181e39a8d8061fdb130cf94df4a69090c687770d464a5ccd5e35532c
+vboxuser@Ubuntu:~/Desktop$ docker run -d --name paciente_falleci>
+5b0bd9a6869ebcd2ccbd8e3507285e8c95be1a766cc207c072728e9baff071e9
+vboxuser@Ubuntu:~/Desktop$ docker ps -a
+CONTAINER ID   IMAGE          COMMAND                  CREATED  >
+5b0bd9a6869e   alpine         "false"                  38 second>
+8612b126181e   alpine         "sleep 300"              3 minutes>
+5ee33e708b9f   nginx:alpine   "/docker-entrypoint.…"   25 minute>
+669e85c0a6d3   hello-world    "/hello"                 9 hours a>
+vboxuser@Ubuntu:~/Desktop$ docker rm -f paciente_estable pacient>
+paciente_estable
+paciente_critico
+paciente_fallecido
+
+
+comandos en limpio :
+# Lanza 3 pacientes: dos vivos, uno muerto
+docker run -d --name paciente_estable nginx:alpine
+docker run -d --name paciente_critico alpine sleep 300
+docker run --name paciente_fallecido alpine false
+# 1. Solo los vivos
+docker ps
+# 2. Todos (vivos y muertos). CRUCIAL para ver contenedores que >
+docker ps -a
+# 3. Solo los IDs de los muertos (para limpieza quirúrgica)
+docker ps -aq --filter "status=exited"
+
+Lección: docker ps -a es tu comando de autopsia. false ejecutó y>
+
+
+
+
+
+vboxuser@Ubuntu:~/Desktop$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS    >
+vboxuser@Ubuntu:~/Desktop$ docker run -d --name paciente_estable>
+777e618f78418f3d8b638c7b3a0b0f9c9b0b0e4303d8a480db089176a2525eba
+vboxuser@Ubuntu:~/Desktop$ docker run -d --name paciente_critico>
+f69821bdc919d0e50878e2b219d5d2780372c6b069afe7968b28f46a7fd95452
+vboxuser@Ubuntu:~/Desktop$ docker run -d --name paciente_falleci>
+c4d0e195fe1dc490ad35df8834e3081cfdcba4bdcaf49283e8bad015e0b7b99c
+
+  GNU nano 7.2        EJERCICIO 1.1: El Hospital                 
+vboxuser@Ubuntu:~/Desktop$ docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED  >
+f69821bdc919   alpine         "sleep 300"              11 second>
+777e618f7841   nginx:alpine   "/docker-entrypoint.…"   19 second>
+vboxuser@Ubuntu:~/Desktop$ docker ps -a
+CONTAINER ID   IMAGE          COMMAND                  CREATED  >
+c4d0e195fe1d   alpine         "false"                  24 second>
+f69821bdc919   alpine         "sleep 300"              30 second>
+777e618f7841   nginx:alpine   "/docker-entrypoint.…"   38 second>
+669e85c0a6d3   hello-world    "/hello"                 9 hours a>
+vboxuser@Ubuntu:~/Desktop$ docker ps -aq --filter "status=exited"
+c4d0e195fe1d
+669e85c0a6d3
+vboxuser@Ubuntu:~/Desktop$ docker rm -f paciente_estable pacient>
+paciente_estable
+paciente_critico
+paciente_fallecido

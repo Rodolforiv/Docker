@@ -1,0 +1,33 @@
+3. docker run (El Hechizo Supremo)
+
+docker run no es un comando. Es un wrapper atómico de 4 acciones: pull, create, start, attach.
+
+La Plantilla Ninja:
+bash
+
+docker run -d --rm --name servidor_web \
+  -p 8080:80 \
+  -v mi_volumen:/usr/share/nginx/html \
+  --memory="128m" --cpus="0.5" \
+  --read-only \
+  nginx:alpine
+
+Disección línea por línea:
+
+    -d: Demonio. Corre en segundo plano. El output se va a /dev/stdout y logs.
+
+    --rm: Auto-suicidio. Cuando el proceso muera, la capa de escritura (UpperDir) se destruye. No zombies.
+
+    --name: Nombre DNS. Si no lo pones, Docker te asigna uno aleatorio horrible (tipo fervent_curie).
+
+    -p 8080:80: Reglas de iptables. Tráfico del Host puerto 8080 se redirige al NET namespace del contenedor puerto 80.
+
+    -v: Montaje bind (directorio host) o volumen (gestionado por Docker). Sobrevive al --rm.
+
+    --memory --cpus: Escribe en los archivos de cgroups del kernel (/sys/fs/cgroup/.../memory.max).
+
+    --read-only: La capa superior del OverlayFS se monta como solo lectura. Si un hacker explota tu web, no puede escribir un backdoor.
+
+
+Lección: El flag --read-only es la diferencia entre una jaula y un parque de atracciones para un atacante.
+

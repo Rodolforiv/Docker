@@ -1,0 +1,7 @@
+MÓDULO 4: LA RED (El NET Namespace)
+6. docker network (Las Autopistas Invisibles)
+
+Crea switches virtuales en el kernel.
+
+Lección: Dentro de una red Docker, el nombre del contenedor es un hostname DNS válido (gracias al servidor DNS interno 127.0.0.11). No necesitas IPs. Esto es lo que hace funcionar a Docker Compose mágicamente.
+

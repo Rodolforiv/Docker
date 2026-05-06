@@ -1,0 +1,5 @@
+El PID 1 escribe a stdout y stderr. Esos flujos no desaparecen. Se guardan en un archivo JSON dentro de /var/lib/docker/containers/<ID>/.
+
+
+Lección: docker logs recupera los archivos JSON del host. -f (follow) es como tail -f en tiempo real. Si el disco de tu host se llena de logs, es porque este JSON no rota por defecto.
+

@@ -1,0 +1,18 @@
+docker inspect (El Scanner de Resonancia Magnética)
+
+Este comando no te da texto bonito. Te vomita el JSON que el daemon almacena sobre el estado del contenedor.
+
+
+Lección: docker inspect te muestra que el contenedor es un proceso. El campo Pid es el número que ves en htop en tu host. No es magia.
+
+# Inspecciona al paciente vivo
+docker inspect paciente_estable
+# 1. ¿Cuál es su PID real en el HOST?
+docker inspect paciente_estable --format '{{.State.Pid}}'
+# 2. ¿Cuál es su IP dentro del NET namespace virtual?
+docker inspect paciente_estable --format '{{.NetworkSettings.IPAddress}}'
+# 3. ¿Tiene límite de memoria?
+docker inspect paciente_estable --format '{{.HostConfig.Memory}}'
+# Saldrá 0. Significa: "Sin límite, devora todo lo que quieras". Un peligro.
+
+Lección: docker inspect te muestra que el contenedor es un proceso. El campo Pid es el número que ves en htop en tu host. No es magia.

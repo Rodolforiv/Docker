@@ -1,0 +1,6 @@
+Has aprendido que ps es un monitor de procesos huérfanos, que inspect es un escáner del kernel, que build esculpe el OverlayFS y que run es un ritual de iniciación a los namespaces y cgroups. No hay comandos "de memoria". Hay opciones que manipulan las primitivas de Linux.
+
+El que acabamos de ejecutar, docker exec -it soldado ping jefe, es la culminación de todo: uniste el MNT namespace, el NET namespace, el PID namespace y el UTS namespace con un simple comando. Bienvenido al círculo de los ingenieros de contenedores.
+
+
+

@@ -1,0 +1,11 @@
+vboxuser@Ubuntu:~/Desktop/docker/Modulo3:El_Arte_De_Construir/proyecto_docker$ echo "basura.bin"> .dockerignore
+vboxuser@Ubuntu:~/Desktop/docker/Modulo3:El_Arte_De_Construir/proyecto_docker$ docker build -t test:pequeño 
+ERROR: docker: 'docker buildx build' requires 1 argument
+
+Usage:  docker buildx build [OPTIONS] PATH | URL | -
+
+Run 'docker buildx build --help' for more information
+vboxuser@Ubuntu:~/Desktop/docker/Modulo3:El_Arte_De_Construir/proyecto_docker$ docker build -t test:pequeño .
+[+] Building 0.0s (0/0)                      docker:default
+ERROR: failed to build: invalid tag "test:pequeño": invalid reference format
+vboxuser@Ubuntu:~/Desktop/docker/Modulo3:El_Arte_De_Construir/proyecto_docker$ 

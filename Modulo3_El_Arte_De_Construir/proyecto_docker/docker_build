@@ -1,0 +1,6 @@
+docker build (El Escultor de Capas)
+
+Convierte tu Dockerfile en una pila de diffs. Cada instrucción es una capa.
+
+La construcción es instantánea. Lección: El contexto de build es el directorio actual. .dockerignore es la navaja suiza que evita que secretos y basura acaben en el interior de las capas del OverlayFS.
+
